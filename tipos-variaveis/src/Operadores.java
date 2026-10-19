@@ -1,23 +1,14 @@
+package br.com.marciomartins.fundamentos;
+
+/**
+ * Demonstra o uso do operador relacional e do operador ternário.
+ */
 public class Operadores {
-    
     public static void main(String[] args) {
-     
-        int a, b;
+        int a = 6;
+        int b = 6;
 
-        a = 6;
-        b = 6;
-
-        //TRUE OU FALSE
-        //String resultado= a==b ? "verdadeiro" : "falso";
-
-        int resultado= a==b ? 1 : 0;
-        //if(a==b)
-            //resultado = "true";
-        //else
-            //resultado = "false";
-
-
+        int resultado = a == b ? 1 : 0;
         System.out.println(resultado);
-
     }
 }
