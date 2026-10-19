@@ -14,12 +14,14 @@ Praticar conceitos iniciais de programação, organização de classes, encapsul
 - Comentários e documentação JavaDoc
 - Calculadora simples executada no terminal
 - Simulação de uma Smart TV com controle de canal, volume e energia
-- Testes automatizados executados pelo GitHub Actions
+- Testes unitários com JUnit 5 e testes de fumaça
+- Integração contínua com GitHub Actions
 
 ## Tecnologias
 
 - Java 17
-- JDK (`javac` e `java`)
+- Maven para dependências e execução dos testes
+- JUnit 5 para testes unitários
 - GitHub Actions para integração contínua
 - Visual Studio Code ou outra IDE Java
 
@@ -28,12 +30,24 @@ Praticar conceitos iniciais de programação, organização de classes, encapsul
 - `Java-Terminal/src/`: calculadora e exemplos de comentários.
 - `sistema-smart-tv/src/`: classes `SmartTv` e `Usuario`.
 - `tipos-variaveis/src/`: exemplos de tipos e operadores.
-- `tests/SmokeTests.java`: testes automatizados sem dependências externas.
-- `.github/workflows/java-ci.yml`: compilação e execução dos testes a cada push ou pull request para `main`.
+- `src/test/java/`: testes unitários JUnit 5.
+- `tests/SmokeTests.java`: testes simples de regressão sem dependências externas.
+- `pom.xml`: configuração Maven e dependência do JUnit 5.
+- `.github/workflows/java-ci.yml`: compila os exercícios e executa os testes em cada push ou pull request para `main`.
 
-## Como executar os exemplos
+## Pré-requisitos
 
-É necessário ter o JDK 17 instalado. Consulte a documentação oficial do [JDK 17](https://docs.oracle.com/en/java/javase/17/).
+- JDK 17
+- Maven 3.8 ou superior
+
+Confira as instalações com:
+
+```bash
+java -version
+mvn -version
+```
+
+## Executar os exemplos
 
 Na raiz do repositório, compile os exercícios:
 
@@ -52,7 +66,17 @@ A classe `Calculadora` contém métodos reutilizáveis e não possui uma interfa
 
 ## Executar os testes
 
-Compile os exercícios e a classe de testes:
+Execute os testes unitários com Maven:
+
+```bash
+mvn test
+```
+
+Maven baixa automaticamente as dependências necessárias do JUnit 5 e gera os relatórios em `target/surefire-reports/`.
+
+Os testes cobrem o estado inicial da Smart TV, energia, mudança de canal, limites inválidos, limites de volume e operações da calculadora.
+
+Os testes de fumaça independentes podem ser executados manualmente:
 
 ```bash
 mkdir -p build/classes
@@ -60,19 +84,20 @@ javac -encoding UTF-8 -d build/classes Java-Terminal/src/*.java sistema-smart-tv
 java -cp build/classes SmokeTests
 ```
 
-Os testes verificam a soma de números, o estado inicial da Smart TV, as operações de canal e volume e os limites inválidos. O GitHub Actions executa a mesma suíte automaticamente.
+O GitHub Actions executa ambos os conjuntos de testes automaticamente.
 
 ## Boas práticas demonstradas
 
 - Estado interno da Smart TV encapsulado em atributos privados.
 - Métodos de leitura explícitos (`getCanal`, `getVolume` e `isLigada`).
 - Validação de canal e limites de volume entre 0 e 100.
-- Testes para comportamentos normais e situações inválidas.
+- Testes unitários com nomes descritivos e verificações de exceções.
+- Integração contínua para detectar regressões antes da integração na branch principal.
 
 ## Próximas melhorias
 
-- Adicionar testes unitários com JUnit quando a estrutura de build estiver preparada.
-- Separar os exercícios em projetos independentes com Maven ou Gradle conforme a trilha evoluir.
+- Migrar gradualmente as classes para pacotes Java nomeados.
+- Separar os exercícios em módulos independentes conforme a trilha evoluir.
 - Ampliar exemplos de operadores, tipos primitivos e tratamento de exceções.
 
 ## Autor
