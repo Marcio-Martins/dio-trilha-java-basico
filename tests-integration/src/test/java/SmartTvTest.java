@@ -26,7 +26,6 @@ class SmartTvTest {
     void deveAlternarEnergia() {
         tv.ligar();
         assertTrue(tv.isLigada());
-
         tv.desligar();
         assertFalse(tv.isLigada());
     }
@@ -36,10 +35,8 @@ class SmartTvTest {
     void deveAlterarCanal() {
         tv.mudarCanal(10);
         assertEquals(10, tv.getCanal());
-
         tv.aumentarCanal();
         assertEquals(11, tv.getCanal());
-
         tv.diminuirCanal();
         assertEquals(10, tv.getCanal());
     }
@@ -63,15 +60,10 @@ class SmartTvTest {
     @Test
     @DisplayName("mantém o volume entre 0 e 100")
     void deveRespeitarLimitesDeVolume() {
-        for (int i = 0; i < 75; i++) {
-            tv.aumentarVolume();
-        }
+        for (int i = 0; i < 75; i++) tv.aumentarVolume();
         assertEquals(100, tv.getVolume());
         assertThrows(IllegalStateException.class, tv::aumentarVolume);
-
-        for (int i = 0; i < 100; i++) {
-            tv.diminuirVolume();
-        }
+        for (int i = 0; i < 100; i++) tv.diminuirVolume();
         assertEquals(0, tv.getVolume());
         assertThrows(IllegalStateException.class, tv::diminuirVolume);
     }
