@@ -1,23 +1,24 @@
+package br.com.marciomartins.calculadora;
+
 /**
-* <h1>Calculadora</h1>
-* A Calculadora realiza operações matemáticas entre números interios* <p>
-* <b>Note:</b> Leia atentamente documentação desta classes
-* para desfrutar dos recursooferecidos pelo autor
-* @author Gleyson Sampaio
-* @version 1.0
-* @since 01/01/2022
-*/
-public class Calculadora{
+ * <h1>Calculadora</h1>
+ * A calculadora realiza operações matemáticas entre números inteiros.
+ * <p>
+ * <b>Nota:</b> esta classe demonstra uma operação simples de soma.
+ *
+ * @author Gleyson Sampaio
+ * @version 1.0
+ * @since 01/01/2022
+ */
+public class Calculadora {
     /**
-     * Este método é utilizado para somar dois números interios
-     * @param numeroUm este é o primeiro parâmetro do método
-     * @param numeroDois este é o segundo parâmetro do método
-     * @return int o resultado deste método é a soma dos dois números.
+     * Soma dois números inteiros.
+     *
+     * @param numeroUm primeiro número
+     * @param numeroDois segundo número
+     * @return resultado da soma dos dois números
      */
-    public int somar(int numeroUm, int numeroDois){
+    public int somar(int numeroUm, int numeroDois) {
         return numeroUm + numeroDois;
     }
 }
-
-
-

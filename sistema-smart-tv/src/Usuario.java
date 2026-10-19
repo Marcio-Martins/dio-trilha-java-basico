@@ -1,3 +1,5 @@
+package br.com.marciomartins.smarttv;
+
 /**
  * Demonstra as operações disponíveis na Smart TV.
  */

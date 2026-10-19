@@ -1,3 +1,6 @@
+import br.com.marciomartins.calculadora.Calculadora;
+import br.com.marciomartins.smarttv.SmartTv;
+
 public class SmokeTests {
     public static void main(String[] args) {
         testarCalculadora();

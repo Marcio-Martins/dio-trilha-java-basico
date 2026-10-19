@@ -1,3 +1,5 @@
+package br.com.marciomartins.smarttv;
+
 /**
  * Representa uma Smart TV com controle básico de canal, volume e energia.
  */
