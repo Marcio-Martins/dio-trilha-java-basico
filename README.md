@@ -14,6 +14,7 @@ Praticar conceitos iniciais de programação, organização de classes, encapsul
 - Comentários e documentação JavaDoc
 - Calculadora simples executada no terminal
 - Simulação de uma Smart TV com controle de canal, volume e energia
+- Pacotes Java nomeados
 - Testes unitários com JUnit 5 e testes de fumaça
 - Integração contínua com GitHub Actions
 
@@ -34,6 +35,15 @@ Praticar conceitos iniciais de programação, organização de classes, encapsul
 - `tests/SmokeTests.java`: testes simples de regressão sem dependências externas.
 - `pom.xml`: configuração Maven e dependência do JUnit 5.
 - `.github/workflows/java-ci.yml`: compila os exercícios e executa os testes em cada push ou pull request para `main`.
+
+## Pacotes Java
+
+As classes reutilizáveis usam pacotes nomeados para evitar colisões de nomes e deixar explícita a organização do código:
+
+- `br.com.marciomartins.calculadora`: classe `Calculadora`.
+- `br.com.marciomartins.smarttv`: classes `SmartTv` e `Usuario`.
+
+Os arquivos permanecem nas pastas dos exercícios da trilha para preservar a organização didática original.
 
 ## Pré-requisitos
 
@@ -59,7 +69,7 @@ javac -encoding UTF-8 -d build/classes Java-Terminal/src/*.java sistema-smart-tv
 Execute a demonstração da Smart TV:
 
 ```bash
-java -cp build/classes Usuario
+java -cp build/classes br.com.marciomartins.smarttv.Usuario
 ```
 
 A classe `Calculadora` contém métodos reutilizáveis e não possui uma interface de terminal própria.
@@ -91,16 +101,17 @@ O GitHub Actions executa ambos os conjuntos de testes automaticamente.
 - Estado interno da Smart TV encapsulado em atributos privados.
 - Métodos de leitura explícitos (`getCanal`, `getVolume` e `isLigada`).
 - Validação de canal e limites de volume entre 0 e 100.
+- Pacotes Java nomeados para organizar classes reutilizáveis.
 - Testes unitários com nomes descritivos e verificações de exceções.
 - Integração contínua para detectar regressões antes da integração na branch principal.
 
 ## Próximas melhorias
 
-- Migrar gradualmente as classes para pacotes Java nomeados.
+- Migrar gradualmente os demais exercícios para pacotes Java nomeados.
 - Separar os exercícios em módulos independentes conforme a trilha evoluir.
 - Ampliar exemplos de operadores, tipos primitivos e tratamento de exceções.
 
 ## Autor
 
 Márcio Martins  
-[LinkedIn](https://www.linkedin.com/in/marcio-martins-eufrazio/) · [Perfil GitHub](https://github.com/Marcio-Martins)
+[LinkedIn](https://www.linkedin.com/in/marciomartins-eufrazio/) · [Perfil GitHub](https://github.com/Marcio-Martins)
