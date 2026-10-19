@@ -73,10 +73,9 @@ mvn -pl tests-integration -am test
 
 ## Executar exemplos
 
-Após compilar os módulos, execute as classes principais usando os classpaths de seus respectivos módulos. Exemplos:
+Após compilar os módulos, execute as classes que possuem ponto de entrada `main` usando o classpath do módulo correspondente. Exemplos:
 
 ```bash
-java -cp Java-Terminal/target/classes br.com.marciomartins.calculadora.Calculadora
 java -cp sistema-smart-tv/target/classes br.com.marciomartins.smarttv.Usuario
 java -cp tipos-variaveis/target/classes br.com.marciomartins.fundamentos.TiposVariaveis
 java -cp tipos-variaveis/target/classes br.com.marciomartins.fundamentos.Operadores
