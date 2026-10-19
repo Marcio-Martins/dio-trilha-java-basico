@@ -6,14 +6,14 @@ Repositório de exercícios e pequenos projetos desenvolvidos durante meus estud
 
 ## Objetivo
 
-Praticar conceitos iniciais de programação, organização de classes, encapsulamento, validação de estado e testes automatizados.
+Praticar fundamentos da linguagem Java com exemplos executáveis, organização de classes, encapsulamento, validação de estado e testes automatizados.
 
 ## Conteúdos
 
 - Tipos de variáveis e operadores
 - Comentários e documentação JavaDoc
-- Calculadora simples executada no terminal
-- Simulação de uma Smart TV com controle de canal, volume e energia
+- Calculadora simples
+- Simulação de Smart TV com controle de canal, volume e energia
 - Pacotes Java nomeados
 - Testes unitários com JUnit 5 e testes de fumaça
 - Integração contínua com GitHub Actions
@@ -21,36 +21,35 @@ Praticar conceitos iniciais de programação, organização de classes, encapsul
 ## Tecnologias
 
 - Java 17
-- Maven para dependências e execução dos testes
-- JUnit 5 para testes unitários
-- GitHub Actions para integração contínua
-- Visual Studio Code ou outra IDE Java
+- Maven
+- JUnit 5
+- GitHub Actions
 
 ## Estrutura
 
-- `Java-Terminal/src/`: calculadora e exemplos de comentários.
+- `Java-Terminal/src/`: calculadora e exemplo de comentários/operações.
 - `sistema-smart-tv/src/`: classes `SmartTv` e `Usuario`.
 - `tipos-variaveis/src/`: exemplos de tipos e operadores.
 - `src/test/java/`: testes unitários JUnit 5.
-- `tests/SmokeTests.java`: testes simples de regressão sem dependências externas.
-- `pom.xml`: configuração Maven e dependência do JUnit 5.
-- `.github/workflows/java-ci.yml`: compila os exercícios e executa os testes em cada push ou pull request para `main`.
+- `tests/SmokeTests.java`: testes de regressão independentes de frameworks.
+- `pom.xml`: configuração Maven e dependência JUnit.
+- `.github/workflows/java-ci.yml`: compilação e testes automáticos.
 
 ## Pacotes Java
 
-As classes reutilizáveis usam pacotes nomeados para evitar colisões de nomes e deixar explícita a organização do código:
-
 - `br.com.marciomartins.calculadora`: classe `Calculadora`.
 - `br.com.marciomartins.smarttv`: classes `SmartTv` e `Usuario`.
+- `br.com.marciomartins.terminal`: classe `Comentarios`.
+- `br.com.marciomartins.fundamentos`: classes `Operadores` e `TiposVariaveis`.
 
-Os arquivos permanecem nas pastas dos exercícios da trilha para preservar a organização didática original.
+Os arquivos continuam organizados pelas pastas dos exercícios da trilha, enquanto os pacotes evitam colisões de nomes e deixam explícita a finalidade das classes.
 
 ## Pré-requisitos
 
 - JDK 17
 - Maven 3.8 ou superior
 
-Confira as instalações com:
+Confira as instalações:
 
 ```bash
 java -version
@@ -59,7 +58,7 @@ mvn -version
 
 ## Executar os exemplos
 
-Na raiz do repositório, compile os exercícios:
+Na raiz do repositório, compile todos os exercícios:
 
 ```bash
 mkdir -p build/classes
@@ -72,21 +71,24 @@ Execute a demonstração da Smart TV:
 java -cp build/classes br.com.marciomartins.smarttv.Usuario
 ```
 
-A classe `Calculadora` contém métodos reutilizáveis e não possui uma interface de terminal própria.
+Execute os exemplos de fundamentos:
+
+```bash
+java -cp build/classes br.com.marciomartins.fundamentos.TiposVariaveis
+java -cp build/classes br.com.marciomartins.fundamentos.Operadores
+```
 
 ## Executar os testes
 
-Execute os testes unitários com Maven:
+Testes unitários JUnit:
 
 ```bash
 mvn test
 ```
 
-Maven baixa automaticamente as dependências necessárias do JUnit 5 e gera os relatórios em `target/surefire-reports/`.
+Os relatórios são gerados em `target/surefire-reports/`. A suíte verifica operações da calculadora, estado e limites da Smart TV.
 
-Os testes cobrem o estado inicial da Smart TV, energia, mudança de canal, limites inválidos, limites de volume e operações da calculadora.
-
-Os testes de fumaça independentes podem ser executados manualmente:
+Testes de fumaça:
 
 ```bash
 mkdir -p build/classes
@@ -94,22 +96,21 @@ javac -encoding UTF-8 -d build/classes Java-Terminal/src/*.java sistema-smart-tv
 java -cp build/classes SmokeTests
 ```
 
-O GitHub Actions executa ambos os conjuntos de testes automaticamente.
+O GitHub Actions executa ambos os conjuntos de testes em cada push ou pull request para `main`.
 
 ## Boas práticas demonstradas
 
-- Estado interno da Smart TV encapsulado em atributos privados.
-- Métodos de leitura explícitos (`getCanal`, `getVolume` e `isLigada`).
-- Validação de canal e limites de volume entre 0 e 100.
-- Pacotes Java nomeados para organizar classes reutilizáveis.
-- Testes unitários com nomes descritivos e verificações de exceções.
-- Integração contínua para detectar regressões antes da integração na branch principal.
+- Encapsulamento e validação de estado.
+- Pacotes Java nomeados.
+- Documentação JavaDoc e nomes descritivos.
+- Comparação segura de strings com `equals`.
+- Testes de casos comuns, limites e valores nulos.
+- Integração contínua para detectar regressões.
 
 ## Próximas melhorias
 
-- Migrar gradualmente os demais exercícios para pacotes Java nomeados.
-- Separar os exercícios em módulos independentes conforme a trilha evoluir.
-- Ampliar exemplos de operadores, tipos primitivos e tratamento de exceções.
+- Separar os exercícios em módulos Maven independentes se o repositório crescer.
+- Expandir a cobertura dos exemplos conforme novos conteúdos forem adicionados.
 
 ## Autor
 
