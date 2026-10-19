@@ -1,39 +1,30 @@
+package br.com.marciomartins.terminal;
+
+/**
+ * Exemplos de comentários e de uma operação simples de soma ou multiplicação.
+ */
 public class Comentarios {
     public static void main(String[] args) {
-        //Olá, eu sou um comentário em uma única linha
+        // Comentário de uma única linha.
 
         /*
-         * Eu sou um comentário 
-         * que posso ser mais detalhado
-         * quando necessário
+         * Comentário de múltiplas linhas.
+         * Use comentários para explicar decisões importantes.
          */
     }
 
     /**
-    * Estas duas estrelinhas acima
-    * é para identificar que você
-    * pretende elaborar um comentário
-    * a nível de documentação
-    * Que incrivel!!!
-    */
-
-    //public void metodo(){}
-
-    /*
-     * Este método foi elaborado as pressas
-     * por isso eu abreviei o nome das variáveis
-     * mas olha, ele tem a finalidade somar ou multiplicar
-     * dois números
+     * Multiplica os valores quando a operação é "M"; caso contrário, soma.
+     *
+     * @param n primeiro número inteiro
+     * @param x segundo número inteiro
+     * @param operacao "M" para multiplicar; qualquer outro valor para somar
+     * @return resultado da operação
      */
-
-    public int somaMultiplica(int n, int x, String m) {
-        int r = 0; //r é igual ao resultado
-        if (m == "M"){ //M= multiplicação
-            r = n * x;
-        }else{
-            // se não soma mesmo
-            r = n + x;
+    public int somaMultiplica(int n, int x, String operacao) {
+        if ("M".equals(operacao)) {
+            return n * x;
         }
-        return r; //retorna o resultado da soma ou multiplicação
+        return n + x;
     }
 }

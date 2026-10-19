@@ -1,9 +1,11 @@
 import br.com.marciomartins.calculadora.Calculadora;
 import br.com.marciomartins.smarttv.SmartTv;
+import br.com.marciomartins.terminal.Comentarios;
 
 public class SmokeTests {
     public static void main(String[] args) {
         testarCalculadora();
+        testarSomaMultiplica();
         testarSmartTv();
         testarLimitesSmartTv();
         System.out.println("Todos os testes automatizados passaram.");
@@ -16,6 +18,15 @@ public class SmokeTests {
         verificar(calculadora.somar(0, 0) == 0, "0 + 0 deve ser 0");
         verificar(calculadora.somar(Integer.MAX_VALUE, 0) == Integer.MAX_VALUE,
                 "Somar zero ao maior inteiro deve preservar o valor");
+    }
+
+    private static void testarSomaMultiplica() {
+        Comentarios exemplo = new Comentarios();
+        verificar(exemplo.somaMultiplica(3, 4, "M") == 12, "Operação M deve multiplicar");
+        verificar(exemplo.somaMultiplica(3, 4, new String("M")) == 12,
+                "Operação M deve funcionar mesmo com outra instância de String");
+        verificar(exemplo.somaMultiplica(3, 4, "S") == 7, "Operação diferente de M deve somar");
+        verificar(exemplo.somaMultiplica(3, 4, null) == 7, "Operação nula deve somar sem lançar exceção");
     }
 
     private static void testarSmartTv() {
