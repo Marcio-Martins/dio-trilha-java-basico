@@ -1,0 +1,40 @@
+name: Java CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compile-and-test:
+    name: Compilar e testar exercícios Java
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Configurar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Compilar os exercícios
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/classes
+          mapfile -d '' sources < <(find Java-Terminal/src sistema-smart-tv/src tipos-variaveis/src -type f -name '*.java' -print0)
+          if [ "${#sources[@]}" -eq 0 ]; then
+            echo "Nenhum arquivo Java foi encontrado."
+            exit 1
+          fi
+          javac -encoding UTF-8 -d build/classes "${sources[@]}" tests/SmokeTests.java
+
+      - name: Executar testes automatizados
+        run: java -cp build/classes SmokeTests
