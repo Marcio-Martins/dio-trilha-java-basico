@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   compile-and-test:
-    name: Compilar e testar exercícios Java
+    name: Compilar e testar módulos Maven
     runs-on: ubuntu-latest
     steps:
       - name: Baixar o código
@@ -25,20 +25,13 @@ jobs:
           java-version: '17'
           cache: maven
 
-      - name: Executar testes unitários JUnit
-        run: mvn --batch-mode --no-transfer-progress test
+      - name: Compilar todos os módulos e executar testes
+        run: mvn --batch-mode --no-transfer-progress verify
 
-      - name: Compilar exercícios e testes de fumaça
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p build/classes
-          mapfile -d '' sources < <(find Java-Terminal/src sistema-smart-tv/src tipos-variaveis/src -type f -name '*.java' -print0)
-          if [ "${#sources[@]}" -eq 0 ]; then
-            echo "Nenhum arquivo Java foi encontrado."
-            exit 1
-          fi
-          javac -encoding UTF-8 -d build/classes "${sources[@]}" tests/SmokeTests.java
-
-      - name: Executar testes de fumaça
-        run: java -cp build/classes SmokeTests
+      - name: Publicar relatórios de testes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorios-junit
+          path: '**/target/surefire-reports/*.xml'
+          if-no-files-found: warn
